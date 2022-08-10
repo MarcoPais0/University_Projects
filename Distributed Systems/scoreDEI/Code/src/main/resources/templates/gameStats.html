@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layout :: nav" />
+    <table class="table table-borderless table-dark">
+        <thead>
+            <tr>
+                <th scope="col"><img th:src="${game.homeTeam.logo}" alt="logo" style="width:30px; height:30px;"></th>
+                <th scope="col" th:text="${game.homeTeam.name}">Home Team</th>
+                <th scope="col" th:text="${homeGoals}">Home Goals</th>
+                <div th:switch="${gameTime}">
+                    <th th:case="-1" scope="col" th:text="${game.date + ' ' + game.time}">Date and Time</th>
+                    <th th:case="*" scope="col" th:text="${gameTime + ''''}" style="color:#FF0000;">Game Time</th>
+                </div>
+                <th scope="col" th:text="${awayGoals}">Away Goals</th>
+                <th scope="col" th:text="${game.awayTeam.name}">Away Team</th>
+                <th scope="col"><img th:src="${game.awayTeam.logo}" alt="logo" style="width:30px; height:30px;">
+                <th scope="col" th:text="${game.location}">Location</th>
+            </tr>
+        </thead>
+    </table>
+
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+            <a th:href="@{registerEvent(id=${game.id}, eventType=${'Game Started'})}" class="btn btn-primary">Game
+                Started</a>
+            <a th:href="@{registerEvent(id=${game.id}, eventType=${'Game Ended'})}" class="btn btn-primary">Game
+                Ended</a>
+        </div>
+        <div class="btn-group" role="group" aria-label="Second group">
+            <a th:href="@{registerEvent(id=${game.id}, eventType=${'Goal'})}" class="btn btn-primary">Goal</a>
+        </div>
+        <div class="btn-group" role="group" aria-label="Second group">
+            <a th:href="@{registerEvent(id=${game.id}, eventType=${'Yellow Card'})}" class="btn btn-primary">Yellow
+                Card</a>
+        </div>
+        <div class="btn-group" role="group" aria-label="Second group">
+            <a th:href="@{registerEvent(id=${game.id}, eventType=${'Red Card'})}" class="btn btn-primary">Red Card</a>
+        </div>
+        <div class="btn-group" role="group" aria-label="Second group">
+            <a th:href="@{registerEvent(id=${game.id}, eventType=${'Game Interrupted'})}" class="btn btn-primary">Game
+                Interrupted</a>
+            <a th:href="@{registerEvent(id=${game.id}, eventType=${'Game Resumed'})}" class="btn btn-primary">Game
+                Resumed</a>
+        </div>
+    </div>
+
+    <table class="table table-borderless table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Home Team</th>
+                <th scope="col"></th>
+                <th scope="col">Away Team</th>
+            </tr>
+        </thead>
+        <tbody th:each="event : ${events}" th:switch="${event.team}">
+            <tr th:case="${game.homeTeam}">
+                <td th:text="${event.time + ' ' + event.eventType + ' - ' + event.player.name}">Event</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr th:case="${game.awayTeam}">
+                <td></td>
+                <td></td>
+                <td th:text="${event.time + ' ' + event.eventType + ' - ' + event.player.name}">Event</td>
+            </tr>
+            <tr th:case="*">
+                <td></td>
+                <td th:text="${event.time + ' ' + event.eventType}">Event</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+com/sdProject/scoreDEI/Player/PlayerRepository.class
+com/sdProject/scoreDEI/Player/Player.class
+com/sdProject/scoreDEI/Team/Team.class
+com/sdProject/scoreDEI/Team/TeamService.class
+com/sdProject/scoreDEI/ScoreDeiApplication.class
+com/sdProject/scoreDEI/Team/TeamRepository.class
+com/sdProject/scoreDEI/Game/GameService.class
+com/sdProject/scoreDEI/Player/PlayerService.class
+com/sdProject/scoreDEI/Game/GameRepository.class
+com/sdProject/scoreDEI/Game/Game.class

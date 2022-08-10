@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layout :: nav" />
+    <form class="create" method="post" th:action="@{/saveGame}" th:object="${game}">
+        <div class=" form-group">
+            <label for="HomeTeam">Home Team</label>
+            <select class="form-control" id="homeTeam" required th:field="*{homeTeam}">
+                <option value="" selected disabled>Select home team</option>
+                <option th:each="team : ${allTeams}" th:value="${{team.id}}" th:text="${team.name}" />
+            </select>
+        </div>
+        <div class=" form-group">
+            <label for="Away Team">Away Team</label>
+            <select class="form-control" id="awayTeam" required th:field="*{awayTeam}">
+                <option value="" selected disabled>Select away team</option>
+                <option th:each="team : ${allTeams}" th:value="${{team.id}}" th:text="${team.name}" />
+            </select>
+        </div>
+        <div class=" form-group">
+            <label for="Location">Location</label>
+            <input required type="text" id="location" class="form-control" placeholder="Enter location of event"
+                th:field="*{location}">
+        </div>
+        <div class=" form-group">
+            <label for="Date">Date</label>
+            <input required type="date" id="date" class="form-control" placeholder="Enter date of event"
+                th:field="*{date}">
+        </div>
+        <div class=" form-group">
+            <label for="Time">Time</label>
+            <input required type="time" step="1" id="time" class="form-control" placeholder="Enter time of event"
+                th:field="*{time}">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Game</button>
+    </form>
+</body>
+
+</html>

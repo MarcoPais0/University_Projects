@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body style="text-align: center; margin: 0 auto 0 auto;">
+    <form th:action="@{/login}" method="post">
+        <p></p>
+        <h4><strong>Email</strong></h4>
+        <input required autofocus type="email" name="email" placeholder="Email">
+        <p></p>
+        <h4><strong>Password</strong></h4>
+        <input required type="password" name="password" placeholder="Password">
+        <p></p>
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+    <p></p>
+    <a th:href="@{/homepageUnsigned}">Enter without account!</a>
+</body>
+
+</html>

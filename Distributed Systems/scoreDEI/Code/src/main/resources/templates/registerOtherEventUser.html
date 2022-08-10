@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layoutUser :: nav" />
+    <p class="h5" th:text="${'Event Type - ' + eventType}"></p>
+    <form class="create" method="post" th:action="@{/saveEventUser}" th:object="${event}">
+        <div>
+            <input type="hidden" th:value="${eventType}" th:attr="name='eventType'">
+        </div>
+        <div>
+            <input type="hidden" th:value="${game.id}" th:attr="name='game'">
+        </div>
+        <div>
+            <input type="hidden" th:value="${game.date}" th:attr="name='date'">
+        </div>
+        <div class=" form-group">
+            <label for="Time">Time</label>
+            <input required type="time" step="1" id="time" th:min="@{game.time}" class="form-control"
+                placeholder="Enter time of event" th:field="*{time}">
+        </div>
+        <button type="submit" class="btn btn-primary">Register Event</button>
+    </form>
+</body>
+
+</html>

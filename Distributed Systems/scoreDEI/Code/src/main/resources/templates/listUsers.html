@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layout :: nav" />
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">User Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Telephone</th>
+                <th scope="col">Role</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.name}">name</td>
+                <td th:text="${user.email}">position</td>
+                <td th:text="${user.password}">birthDate</td>
+                <td th:text="${user.telephone}">telephone</td>
+                <td th:text="${user.role}">role</td>
+                <td>
+                    <a th:href="@{manageUser(id=${user.id})}" class="btn btn-primary">Edit/Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

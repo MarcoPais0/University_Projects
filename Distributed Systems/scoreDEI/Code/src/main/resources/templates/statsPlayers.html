@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layoutUser :: nav" />
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th style="padding-left:30px;" scope="col">Photo</th>
+                <th scope="col" th:switch="${order}">
+                    <a th:case="Descending" th:href="@{statsPlayers(order=${'AscendingPlayers'})}">↓ Name</a>
+                    <a th:case="Ascending" th:href="@{statsPlayers(order=${'DescendingPlayers'})}">↑ Name</a>
+                </th>
+                <th scope="col">Team</th>
+                <th scope="col">Position</th>
+                <th scope="col">Birth Date</th>
+                <th scope="col" th:switch="${order}">
+                    <a th:case="Descending" th:href="@{statsPlayers(order=${'AscendingGoals'})}">↓ Goals</a>
+                    <a th:case="Ascending" th:href="@{statsPlayers(order=${'DescendingGoals'})}">↑ Goals</a>
+                </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="player : ${players}">
+                <td style="padding-left:30px;"><img th:src="${player.photo}" alt="photo"
+                        style="width:50px; height:50px;"></td>
+                <td th:text="${player.name}">name</td>
+                <td th:text="${player.team.name}">team</td>
+                <td th:text="${player.position}">position</td>
+                <td th:text="${player.birthDate}">birthDate</td>
+                <td th:text="${player.goals}">goals</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

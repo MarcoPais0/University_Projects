@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  database:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres # The PostgreSQL user (useful to connect to the database)
+      POSTGRES_PASSWORD: postgres  # The PostgreSQL password (useful to connect to the database)
+      POSTGRES_DB: scoreDei # The PostgreSQL default database (automatically created at first launch)
+  command-line:
+    build:
+     context: .
+     dockerfile: Dockerfile
+    command: tail -f /dev/null
+    links: 
+      - database
+    volumes:
+      - ..:/workspace
+    

@@ -1,0 +1,11 @@
+Dynamic Programming:
+	Overlapping Subproblems
+	https://www.geeksforgeeks.org/overlapping-subproblems-property-in-dynamic-programming-dp-1/
+	Optimal Substructure:
+	https://www.geeksforgeeks.org/optimal-substructure-property-in-dynamic-programming-dp-2/
+
+Vertex Cover Problem:
+	Explanation:
+	https://www.geeksforgeeks.org/vertex-cover-problem-set-1-introduction-approximate-algorithm-2/?ref=lbp
+	Dynamic Programming Solution (C++ at the bottom):
+	https://www.geeksforgeeks.org/vertex-cover-problem-set-2-dynamic-programming-solution-tree/

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layout :: nav" />
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Home Flag</th>
+                <th scope="col">Home Team</th>
+                <th scope="col">Away Team</th>
+                <th scope="col">Away Flag</th>
+                <th scope="col">Location</th>
+                <th scope="col">Date</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="game : ${games}">
+                <td><img th:src="${game.homeTeam.logo}" alt="logo" style="width:30px; height:30px;"></td>
+                <td th:text="${game.homeTeam.name}">homeTeam</td>
+                <td th:text="${game.awayTeam.name}">awayTeam</td>
+                <td><img th:src="${game.awayTeam.logo}" alt="logo" style="width:30px; height:30px;"></td>
+                <td th:text="${game.location}">location</td>
+                <td th:utext="${game.date + ' ' + game.time}">dateTime</td>
+                <td>
+                    <a th:href="@{manageGame(id=${game.id})}" class="btn btn-primary">Edit/Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

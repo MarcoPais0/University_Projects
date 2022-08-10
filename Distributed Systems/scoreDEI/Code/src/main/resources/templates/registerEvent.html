@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layout :: nav" />
+    <p class="h5" th:text="${'Event Type - ' + eventType}"></p>
+    <form class="create" method="post" th:action="@{/saveEvent}" th:object="${event}">
+        <div>
+            <input type="hidden" th:value="${eventType}" th:attr="name='eventType'">
+        </div>
+        <div>
+            <input type="hidden" th:value="${game.id}" th:attr="name='game'">
+        </div>
+        <div class=" form-group">
+            <label for="Team">Team</label>
+            <select class="form-control" id="team" required th:field="*{team}">
+                <option value="" selected disabled>Select team</option>
+                <option th:value="${{game.homeTeam.id}}" th:text="${game.homeTeam.name}" />
+                <option th:value="${{game.awayTeam.id}}" th:text="${game.awayTeam.name}" />
+            </select>
+        </div>
+        <div class=" form-group">
+            <label for="Away Team">Player</label>
+            <select class="form-control" id="awayTeam" required th:field="*{player}">
+                <option value="" selected disabled>Home players</option>
+                <option th:each="player : ${game.homeTeam.squad}" th:value="${{player.id}}" th:text="${player.name}" />
+                <option value="" selected disabled>Away players</option>
+                <option th:each="player : ${game.awayTeam.squad}" th:value="${{player.id}}" th:text="${player.name}" />
+            </select>
+        </div>
+        <div>
+            <input type="hidden" th:value="${game.date}" th:attr="name='date'">
+        </div>
+        <div class=" form-group">
+            <label for="Time">Time</label>
+            <input required type="time" step="1" id="time" th:min="@{game.time}" class="form-control"
+                placeholder="Enter time of event" th:field="*{time}">
+        </div>
+        <button type="submit" class="btn btn-primary">Register Event</button>
+    </form>
+</body>
+
+</html>

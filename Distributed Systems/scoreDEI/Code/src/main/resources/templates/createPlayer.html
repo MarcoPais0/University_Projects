@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layout :: nav" />
+    <form class="create" method="post" th:action="@{/savePlayer}" th:object="${player}">
+        <div>
+            <input type="hidden" th:value="${'https://media.api-sports.io/football/players/105549.png'}"
+                th:attr="name='photo'">
+        </div>
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input required type="text" id="name" class="form-control" placeholder="Enter player name"
+                th:field="*{name}">
+        </div>
+        <div class=" form-group">
+            <label for="Position">Position</label>
+            <select class="form-control" id="position" required th:field="*{position}">
+                <option value="" selected disabled>Select position</option>
+                <option value="Goalkeeper">Goalkeeper</option>
+                <option value="Defender">Defender</option>
+                <option value="Midfielder">Midfielder</option>
+                <option value="Attacker">Attacker</option>
+            </select>
+        </div>
+        <div class=" form-group">
+            <label for="BirthDate">Birth Date</label>
+            <input required type="date" id="birthDate" class="form-control" placeholder="Enter player birth date"
+                th:field="*{birthDate}">
+        </div>
+        <div class=" form-group">
+            <label for="PlayerTeam">PlayerTeam</label>
+            <select class="form-control" id="team" required th:field="*{team}">
+                <option value="" selected disabled>Select player team</option>
+                <option th:each="team : ${allTeams}" th:value="${{team.id}}" th:text="${team.name}" />
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Player</button>
+    </form>
+</body>
+
+</html>

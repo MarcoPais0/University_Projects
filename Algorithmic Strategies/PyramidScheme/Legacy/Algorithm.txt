@@ -1,0 +1,24 @@
+Pré prossessamento:
+????????????????????????
+
+Algoritmo:
+Percorrer os membros e escolher o que tiver o número máximo de ligações novas (incluindo o próprio)
+Se encontrar um que tem ligações apenas a nodes novos (incluindo o próprio) pode parar a procura e escolher esse pois não vale a pena ver os nodes para a frente visto que estão ordenados
+Atualizar lista de procura, o valor total e o counter
+Repetir
+
+
+Pré prossessamento:
+Criar um map com os nodes que têm ligações a um node (1: [3, 4, 5] -> 3, 4 e 5 estão ligados ao 1)
+
+Algoritmo:
+Escolher o próximo membro a ser procurado
+Acessa o map para ver quais membros têm ligações ao membro procurado
+Escolher o que tem o número máximo de ligações (incluindo o próprio)
+Atualizar lista de procura, o valor total e o counter
+Repetir
+
+
+Melhorias:
+Alterar o vector de membros para um array (acesso mais rápido?)
+Adicionar um contador de membros totais do esquema

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layout :: nav" />
+    <form class="create" method="post" th:action="@{/saveUser}" th:object="${user}">
+        <div>
+            <input type="hidden" th:field="*{id}">
+        </div>
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input required type="text" id="name" class="form-control" placeholder="Enter user name" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label for="Email Address">Email address</label>
+            <input required type="email" id="email" class="form-control" placeholder="Enter user email"
+                th:field="*{email}">
+        </div>
+        <div class=" form-group">
+            <label for="Telephone">Telephone</label>
+            <input required type="text" id="telephone" class="form-control" placeholder="Enter user telephone"
+                th:field="*{telephone}">
+        </div>
+        <div class=" form-group">
+            <label for="Password">Password</label>
+            <input required type="text" id="password" class="form-control" placeholder="Enter user password"
+                th:field="*{password}">
+        </div>
+        <div class=" form-group">
+            <label for="Role">Role</label>
+            <select class="form-control" id="role" required th:field="*{role}">
+                <option value="" selected disabled>Select a role</option>
+                <option value="0">User</option>
+                <option value="1">Admin</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit User</button>
+    </form>
+    <form class="create" method="post" th:action="@{/deleteUser}" th:object="${user}">
+        <div>
+            <input type="hidden" th:field="*{id}">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Delete User</button>
+        </div>
+    </form>
+</body>
+
+</html>

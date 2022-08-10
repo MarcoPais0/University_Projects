@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: head" />
+
+<body>
+    <nav th:replace="layoutUnsigned :: nav" />
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th style="padding-left:30px;" scope="col">Logo</th>
+                <th scope="col" th:switch="${order}">
+                    <a th:case="Descending" th:href="@{statsTeamsUnsigned(order=${'AscendingTeams'})}">↓ Team</a>
+                    <a th:case="Ascending" th:href="@{statsTeamsUnsigned(order=${'DescendingTeams'})}">↑ Team</a>
+                </th>
+                <th scope="col" th:switch="${order}">
+                    <a th:case="Descending" th:href="@{statsTeamsUnsigned(order=${'AscendingGames'})}">↓ Games Played</a>
+                    <a th:case="Ascending" th:href="@{statsTeamsUnsigned(order=${'DescendingGames'})}">↑ Games Played</a>
+                </th>
+                <th scope="col" th:switch="${order}">
+                    <a th:case="Descending" th:href="@{statsTeamsUnsigned(order=${'AscendingWins'})}">↓ Wins</a>
+                    <a th:case="Ascending" th:href="@{statsTeamsUnsigned(order=${'DescendingWins'})}">↑ Wins</a>
+                </th>
+                <th scope="col" th:switch="${order}">
+                    <a th:case="Descending" th:href="@{statsTeamsUnsigned(order=${'AscendingDefeats'})}">↓ Defeats</a>
+                    <a th:case="Ascending" th:href="@{statsTeamsUnsigned(order=${'DescendingDefeats'})}">↑ Defeats</a>
+                </th>
+                <th scope="col" th:switch="${order}">
+                    <a th:case="Descending" th:href="@{statsTeamsUnsigned(order=${'AscendingLosses'})}">↓ Losses</a>
+                    <a th:case="Ascending" th:href="@{statsTeamsUnsigned(order=${'DescendingLosses'})}">↑ Losses</a>
+                </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="team : ${teams}">
+                <td style="padding-left:30px;"><img th:src="${team.logo}" alt="logo" style="width:50px; height:50px;"></td>
+                <td th:text="${team.name}">team</td>
+                <td th:text="${team.games}">games</td>
+                <td th:text="${team.wins}">victories</td>
+                <td th:text="${team.defeats}">defeats</td>
+                <td th:text="${team.losses}">losses</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
