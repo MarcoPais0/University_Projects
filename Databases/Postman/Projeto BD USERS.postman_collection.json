@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "9440ee99-3baa-4d71-8cb5-bbf41cedec8b",
+		"name": "Projeto BD USERS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registo de Utilizadores",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "user",
+						"type": "text"
+					},
+					{
+						"key": "email",
+						"value": "user@gmail.com",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "user",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"email\": \"{{$randomEmail}}\",\r\n    \"password\": \"{{$randomPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/users/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"users",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticação de utilizadores",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "adeus123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "adeus",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar um novo leilão",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjIsInVzZXJuYW1lIjoiYWRldXMiLCJhZG1pbiI6ZmFsc2UsImV4cCI6MTYyMjQ5NDMxNX0.OqVDTC6S6oKVuyBaD7Nvsn3j_195_vWiUVCv2lR7yBw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"produto_barcode\": {{$randomInt}},\r\n    \"precomin\": {{$randomPrice}},\r\n    \"titulo\": \"{{$randomProductName}}\",\r\n    \"descricao\": \"{{$randomCatchPhrase}}\",\r\n    \"data_final\": \"2021-06-30 17:26\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/leiloes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"leiloes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos os leilões existentes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoib2xhYSIsImFkbWluIjpmYWxzZSwiZXhwIjoxNjIyNDkwNzkxfQ.kbx6NMcAiOiF9_fpCzrZtmfzaBEicGGgLwWDlVYdaCs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/leiloes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"leiloes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pesquisar leilões existentes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoib2xhYSIsImFkbWluIjpmYWxzZSwiZXhwIjoxNjIyNDkwNzkxfQ.kbx6NMcAiOiF9_fpCzrZtmfzaBEicGGgLwWDlVYdaCs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/leiloes/566",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"leiloes",
+						"566"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar detalhes de um leilão",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoib2xhYSIsImFkbWluIjpmYWxzZSwiZXhwIjoxNjIyNDkwNzkxfQ.kbx6NMcAiOiF9_fpCzrZtmfzaBEicGGgLwWDlVYdaCs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/leiloes/produto_barcode=462",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"leiloes",
+						"produto_barcode=462"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todos os leilões em que o utilizador tenha atividade",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoib2xhYSIsImFkbWluIjpmYWxzZSwiZXhwIjoxNjIyNDkwNzkxfQ.kbx6NMcAiOiF9_fpCzrZtmfzaBEicGGgLwWDlVYdaCs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/users/leiloes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"users",
+						"leiloes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Efetuar uma licitação num leilão",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjYsInVzZXJuYW1lIjoiYmFkYnVubnkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjIyNDk0MjkzfQ.oyVBPhfGMC98zx7RQvnadhSSeIRdo9ERg3to_XjpmVE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valor\": 1579,\r\n    \"leiloes_produto_barcode\": 548\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/licitacoes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"licitacoes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar propriedades de um leilão",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoib2xhYSIsImFkbWluIjpmYWxzZSwiZXhwIjoxNjIyNDkwNzkxfQ.kbx6NMcAiOiF9_fpCzrZtmfzaBEicGGgLwWDlVYdaCs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"{{$randomPhrase}}\",\r\n    \"titulo\": \"{{$randomProduct}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/leiloes/leilao=566",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"leiloes",
+						"leilao=566"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Escrever mensagem no mural de um leilão",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoib2xhYSIsImFkbWluIjpmYWxzZSwiZXhwIjoxNjIyNDkwNzkxfQ.kbx6NMcAiOiF9_fpCzrZtmfzaBEicGGgLwWDlVYdaCs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mensagem\": \"{{$randomCatchPhrase}}\",\r\n    \"leiloes_produto_barcode\": 566\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/projeto/leiloes/mural/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"leiloes",
+						"mural",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar todas as notificações do utilizador",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjIsInVzZXJuYW1lIjoiYWRldXMiLCJhZG1pbiI6ZmFsc2UsImV4cCI6MTYyMjQ5MTI3NH0.zWttFtswnIrZw0YUbgmmq8Ggz623xwVqKg5B3AncdHQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/projeto/users/notificacoes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"users",
+						"notificacoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Término do leilão na data, hora e minuto marcados",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiV2lsbGllMTAiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjIyNDc5MjEzfQ.iSSjc-noRD0k0cDd6qZsmTHkYjks6vY9OvFRWztHh0s",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/projeto/leiloes/end",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"projeto",
+						"leiloes",
+						"end"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "access-token",
+			"value": "token"
+		}
+	]
+}

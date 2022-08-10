@@ -1,0 +1,22 @@
+Mar 24 17:25:53.662 HYPERVISOR: Release 0.2.21-amd64/Linux (tag 2019071212)
+Mar 24 17:25:53.662 HYPERVISOR: Started on IP = localhost, TCP port = 41085.
+Mar 24 17:25:53.676 HYPERVISOR: exec_cmd: hypervisor version 
+Mar 24 17:25:53.676 HYPERVISOR: exec_cmd: hypervisor working_dir /home/user/GNS3/projects/Projeto_RC/project-files/dynamips 
+Mar 24 17:25:53.676 GENERAL: working_dir=/home/user/GNS3/projects/Projeto_RC/project-files/dynamips
+Mar 24 17:25:53.677 HYPERVISOR: exec_cmd: ethsw create SW3 
+Mar 24 17:25:55.363 HYPERVISOR: exec_cmd: nio create_udp udp-0c5219f5-518b-4ea5-934c-4746f7156ea5 10017 127.0.0.1 10016 
+Mar 24 17:25:55.363 HYPERVISOR: exec_cmd: ethsw add_nio SW3 udp-0c5219f5-518b-4ea5-934c-4746f7156ea5 
+Mar 24 17:25:55.383 HYPERVISOR: exec_cmd: ethsw set_access_port SW3 udp-0c5219f5-518b-4ea5-934c-4746f7156ea5 1 
+Mar 24 17:25:55.900 HYPERVISOR: exec_cmd: nio create_udp udp-f8eaa26f-33ac-4d9b-a98d-55807e5984ed 10028 127.0.0.1 10029 
+Mar 24 17:25:55.901 HYPERVISOR: exec_cmd: ethsw add_nio SW3 udp-f8eaa26f-33ac-4d9b-a98d-55807e5984ed 
+Mar 24 17:25:55.916 HYPERVISOR: exec_cmd: ethsw set_access_port SW3 udp-f8eaa26f-33ac-4d9b-a98d-55807e5984ed 1 
+Mar 24 17:25:56.018 HYPERVISOR: exec_cmd: nio create_udp udp-9245a58a-b9b5-49ec-b946-cc560128899a 10030 127.0.0.1 10031 
+Mar 24 17:25:56.018 HYPERVISOR: exec_cmd: ethsw add_nio SW3 udp-9245a58a-b9b5-49ec-b946-cc560128899a 
+Mar 24 17:25:56.038 HYPERVISOR: exec_cmd: ethsw set_access_port SW3 udp-9245a58a-b9b5-49ec-b946-cc560128899a 1 
+Mar 24 17:27:52.944 HYPERVISOR: exec_cmd: ethsw set_access_port SW3 udp-0c5219f5-518b-4ea5-934c-4746f7156ea5 1 
+Mar 24 17:27:52.944 HYPERVISOR: exec_cmd: ethsw set_access_port SW3 udp-f8eaa26f-33ac-4d9b-a98d-55807e5984ed 1 
+Mar 24 17:27:52.945 HYPERVISOR: exec_cmd: ethsw set_access_port SW3 udp-9245a58a-b9b5-49ec-b946-cc560128899a 1 
+Mar 24 18:03:32.227 HYPERVISOR: exec_cmd: ethsw delete SW3 
+Mar 24 18:03:32.274 HYPERVISOR: exec_cmd: hypervisor stop 
+Mar 24 18:03:32.499 HYPERVISOR: Stopped.
+Mar 24 18:03:32.499 GENERAL: reset done.
