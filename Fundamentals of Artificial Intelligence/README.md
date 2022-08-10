@@ -1,1 +1,1 @@
-# Algorithmic Strategies
+# Fundamentals of Artificial Intelligence
