@@ -1,1 +1,1 @@
-# Algorithmic Strategies
+# Principles of Procedural Programming
